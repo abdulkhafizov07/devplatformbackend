@@ -30,6 +30,9 @@ RUN if [ "$ENVIRONMENT" = "development" ]; then \
 
 COPY . /app
 
+RUN chmod +x /app/run.sh
+
 EXPOSE 8080
 
-CMD ["gunicorn", "-c", "gunicorn.conf.py", "config.asgi:application"]
+CMD ["/app/run.sh"]
+
